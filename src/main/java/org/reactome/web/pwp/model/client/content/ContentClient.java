@@ -122,7 +122,7 @@ public abstract class ContentClient extends ContentClientAbstract {
     }
 
     public static void getTopLevelPathways(String species, ContentClientHandler.ObjectListLoaded<TopLevelPathway> handler) {
-        request("data/pathways/top/" + species.replaceAll("[ _]+", "+"), handler, body -> {
+        request("data/pathways/top/" + species.replaceAll("[ _]+", "+") + "/", handler, body -> {
             JSONArray list = JSONParser.parseStrict(body).isArray();
             List<TopLevelPathway> tpls = getDatabaseObjectList(list);
             handler.onObjectListLoaded(tpls);
